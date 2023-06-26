@@ -71,9 +71,35 @@ app.get("/lifestyle-blogs", async (req, res) => {
     res.status(500).send("Error retrieving blog posts");
   }
 });
-app.get("/discussion-forums", async(req, res)=>{
-  res.send('Under Development');
+app.get("/admin",function(req,res){
+  res.render('blog_upload');
 })
+app.post("/post_blog", function (req, res) {
+  console.log("received");
+  const heading = req.body.heading;
+  const subheading = req.body.subheading;
+  const content = req.body.content;
+  const genre = req.body.genre;
+  const image = req.body.image;
+  const password = req.body.password;
+  if (password === "$$123456$$") {
+    const newBlogPost = new blog({
+      heading: heading,
+      subheading: subheading,
+      content: content,
+      genre: genre,
+      image: image,
+    });
+    async function saveBlogPost() {
+      await newBlogPost.save();
+    }
+    saveBlogPost();
+    console.log(newBlogPost);
+    res.send("SUCCESS");
+  } else {
+    res.send("INVALID PASSWORD / YOU ARE NOT AUTHORISED CONTACT ADMIN");
+  }
+});
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Upload</title>
+    <link href="https://cdn.tailwindcss.com/2.2.16/tailwind.min.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body style="background-color: #0C134F;">
+    <%- include('header'); -%>
+    <div class="container mx-auto p-8">
+        <div class="rounded-lg" style="background-color: antiquewhite;">
+            <center>
+                <h1 style="font-family: Ubuntu; color: black; font-size: 30px;">Create a New Post</h1>
+            </center>
+        </div>
+        <br>
+        <form action="/post_blog" method="post" class="bg-white shadow-md rounded-lg p-6">
+            <label for="heading" class="block mb-2">Heading for Blog:</label>
+            <input type="text" name="heading" class="border border-gray-300 px-4 py-2 mb-4 rounded-md w-full">
+            <label for="subheading" class="block mb-2">Sub-Heading for Blog:</label>
+            <input type="text" name="subheading" class="border border-gray-300 px-4 py-2 mb-4 rounded-md w-full">
+            <label for="">Please use strong tag of HTML for rendering bold texts in your posts.</label>
+            <label for="content" class="block mb-2">Write Blog Content Below:</label>
+            <textarea name="content" class="border border-gray-300 px-4 py-2 mb-4 rounded-md w-full" cols="30" rows="10"></textarea>
+            <label for="image" class="block mb-2">Image ID Google Drive- </label>
+            <input type="text" name="image" class="border border-gray-300 px-4 py-2 mb-4 rounded-md w-full">
+            <label for="genre">Select the Genre of Your Blog -></label>
+            <select name="genre" id="">
+                <option value="technical"><strong>Technical</strong></option>
+                <option value="lifestyle"><strong>Lifestyle</strong></option>
+                <option value="travel"><strong>Travel</strong></option>
+                <option value="software-development"><strong>Software-Development</strong></option>
+            </select>
+            <br>
+            <br>
+            <label for="password" class="block mb-2">Enter your account passoword</label>
+            <input type="password" name="password" class="border border-gray-300 px-4 py-2 mb-4 rounded-md w-full">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Upload Blog</button>
+        </form>
+    </div>
+    <%- include('footer'); -%>
+</body>
+</html>

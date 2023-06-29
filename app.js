@@ -22,10 +22,10 @@ const blogSchema = new mongoose.Schema({
 });
 const blog = mongoose.model("blog", blogSchema, "blog-posts");
 
-app.get("/software-blogs", async (req, res) => {
+app.get("/rnative-blogs", async (req, res) => {
   try {
     // Fetch data from MongoDB
-    const blogData = await blog.find({ genre: "software-development" });
+    const blogData = await blog.find({ genre: "react-native" });
     // Send the data as the response
     console.log(blogData);
     res.json(blogData);
@@ -59,10 +59,10 @@ app.get("/tech-blogs", async (req, res) => {
     res.status(500).send("Error retrieving blog posts");
   }
 });
-app.get("/lifestyle-blogs", async (req, res) => {
+app.get("/programming-blogs", async (req, res) => {
   try {
     // Fetch data from MongoDB
-    const blogData = await blog.find({ genre: "lifestyle" });
+    const blogData = await blog.find({ genre: "programming" });
     // Send the data as the response
     console.log(blogData);
     res.json(blogData);
